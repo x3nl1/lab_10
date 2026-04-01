@@ -29,3 +29,27 @@ func calculate(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"sum": sum})
 }
+
+func token(c *gin.Context) {
+	t, err := generateToken()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"token": t})
+}
+
+func protected(c *gin.Context) {
+	auth := c.GetHeader("Authorization")
+	if auth == "" {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "no token"})
+		return
+	}
+
+	if err := validateToken(auth); err != nil {
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"status": "ok"})
+}
