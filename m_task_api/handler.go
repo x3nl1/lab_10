@@ -1,0 +1,31 @@
+package main
+
+import (
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
+
+func register(c *gin.Context) {
+	var user User
+	if err := c.ShouldBindJSON(&user); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, user)
+}
+
+func calculate(c *gin.Context) {
+	var numbers Numbers
+	if err := c.ShouldBindJSON(&numbers); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	sum := 0
+	for _, n := range numbers.Values {
+		sum += n * n
+	}
+
+	c.JSON(http.StatusOK, gin.H{"sum": sum})
+}
