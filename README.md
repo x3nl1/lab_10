@@ -4,7 +4,7 @@
 
 \## Студент
 
-ФИО: Степан Агапов Александрович  
+ФИО: Агапов Степан Александрович 
 
 Группа: 221331  
 
@@ -76,31 +76,27 @@
 
 
 
-Запуск Go сервиса:
+\*\*Запуск Go сервиса:\*\*
 
 
 
-cd m\_task\_api  
+&#x20;   cd m\_task\_api
 
-go mod tidy  
+&#x20;   go mod tidy
 
-go run .  
-
-
-
-Запуск Python тестов (в отдельном терминале):
+&#x20;   go run .
 
 
 
-cd python\_client  
-
-pip install requests pytest  
-
-pytest  
+\*\*Запуск Python тестов (в отдельном терминале):\*\*
 
 
 
-\---
+&#x20;   cd python\_client
+
+&#x20;   pip install requests pytest
+
+&#x20;   pytest
 
 
 
@@ -108,7 +104,7 @@ pytest
 
 
 
-docker-compose up --build  
+&#x20;   docker-compose up --build
 
 
 
@@ -124,9 +120,9 @@ docker-compose up --build
 
 
 
-cd m\_task\_api  
+&#x20;   cd m\_task\_api
 
-go test ./...  
+&#x20;   go test ./...
 
 
 
@@ -134,9 +130,9 @@ go test ./...
 
 
 
-cd python\_client  
+&#x20;   cd python\_client
 
-pytest  
+&#x20;   pytest
 
 
 
