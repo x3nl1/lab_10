@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  go_service:
+    build: ./m_task_api
+    ports:
+      - "8080:8080"
+
+  python_client:
+    build: ./python_client
+    depends_on:
+      - go_service
